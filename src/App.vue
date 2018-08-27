@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <task-list name="Todo List">
-      <task-item v-for="item in todos">{{item}}</task-item>
+      <task-item v-for="(item,index) in todos" :key="index">{{item}}</task-item>
       <task-item>
         <input id="newone" type="text" v-model="newtodo" @keyup.enter="addTodo" placeholder="Add New">
       </task-item>

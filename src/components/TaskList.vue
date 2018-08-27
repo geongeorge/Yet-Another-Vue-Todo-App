@@ -1,23 +1,19 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h3>Ecosystem</h3>
+  <div class="tasks">
+    <h3>{{name}}</h3>
     <ul>
-      <li>Do this and that</li>
-      <li>Do this and that</li>
-      <li>Do this and that</li>
-      <li>Do this and that</li>
+      <slot></slot>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'tasks',
   props: {
-    msg: String
+    name: {default: "List"},
   }
-}
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

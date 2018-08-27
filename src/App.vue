@@ -1,17 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <task-list name="Todo List">
+      <task-item v-for="item in todos">{{item}}</task-item>
+      <task-item>
+        <input id="newone" type="text" v-model="newtodo" @keyup.enter="addTodo" placeholder="Add New">
+      </task-item>
+    </task-list>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TaskList from './components/TaskList.vue'
+import TaskItem from './components/TaskItem.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    TaskList,
+    TaskItem
+  },
+  data:()=> {
+    return {
+      todos: [
+        "Do Laundry",
+        "Bath",
+        "Buy Food",
+        "Sleep",
+      ],
+      newtodo: "",
+    }
+  },
+  methods : {
+    addTodo() {
+      this.todos.push(this.newtodo);
+      this.newtodo = "";
+    }
   }
 }
 </script>
@@ -24,5 +47,16 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#newone {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  font-size: 20px;
+  text-align: center;
+}
+#newone:focus {
+  outline:0;
+  border: 0;
 }
 </style>
